@@ -1,4 +1,5 @@
 ## Freenove_ESP32_WROVER_Board
+## This branch adds flags for compilation with espressif/arduino, fixes errors related to psram with esp32-wrover and other boards
 
 A kit with a Freenove® ESP32 Board for learning programming and electronics.
 
