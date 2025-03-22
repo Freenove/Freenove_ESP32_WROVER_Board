@@ -50,7 +50,7 @@ Select "Micropython (ESP32)", select "USB-SERIAL CH340 (COM4)", and then click t
 .. image:: ../_static/imgs/34_Camera_Web_Server/Chapter34_10.png
     :align: center
 
-In the new popup window, select corresponding "USB-SERIAL CH340 (COM3)" for port. Click "Browse", select " **30.1_Camera_WebServer\firmware\micropython_camera_feeeb5ea3_esp32_idf4_4.bin** ".
+In the new popup window, select corresponding "USB-SERIAL CH340 (COM3)" for port. Click "Browse", select " **5.1_Camera_WebServer\firmware\micropython_camera_feeeb5ea3_esp32_idf4_4.bin** ".
 
 Select "Erase…" and click "Install"。
 
@@ -59,7 +59,7 @@ Select "Erase…" and click "Install"。
 
 Wait for completion.
 
-Open "Thonny", click "This computer"  ->  "D:"  ->  "Micropython_Codes"  ->  "30.1_Camera_WebServer". Select folder "lib", right click your mouse to select "Upload to /", wait for "lib" to be uploaded to ESP32-WROVER and then double click "picoweb_video.py".
+Open "Thonny", click "This computer"  ->  "D:"  ->  "Micropython_Codes"  ->  "5.1_Camera_WebServer". Select folder "lib", right click your mouse to select "Upload to /", wait for "lib" to be uploaded to ESP32-WROVER and then double click "picoweb_video.py".
 
 Camera_WebServer
 ---------------------------------
@@ -94,27 +94,27 @@ The effect is shown in the image below.
 
 The following is the program code.
 
-.. literalinclude:: ../../../freenove_Kit/Python/Python_Codes/30.1_Camera_WebServer/picoweb_video.py
+.. literalinclude:: ../../../freenove_Kit/Python/Python_Codes/5.1_Camera_WebServer/picoweb_video.py
     :language: python
     :dedent:
 
 Import picoweb、utime、camera、gc modules.
 
-.. literalinclude:: ../../../freenove_Kit/Python/Python_Codes/30.1_Camera_WebServer/picoweb_video.py
+.. literalinclude:: ../../../freenove_Kit/Python/Python_Codes/5.1_Camera_WebServer/picoweb_video.py
     :language: python
     :lines: 3-6
     :dedent:
 
 Before running the code, please modify the WiFi name and password in the code to ensure that the ESP32 can connect to the network.
 
-.. literalinclude:: ../../../freenove_Kit/Python/Python_Codes/30.1_Camera_WebServer/picoweb_video.py
+.. literalinclude:: ../../../freenove_Kit/Python/Python_Codes/5.1_Camera_WebServer/picoweb_video.py
     :language: python
     :lines: 8-9
     :dedent:
 
 Define the WiFi connection function, set the ESP32 to STA mode, and let the ESP32 connect to the nearby WiFi. If the connection is successful, the WiFi configuration information of the ESP32 will be printed; if the connection fails, the connection timeout will be printed.
 
-.. literalinclude:: ../../../freenove_Kit/Python/Python_Codes/30.1_Camera_WebServer/picoweb_video.py
+.. literalinclude:: ../../../freenove_Kit/Python/Python_Codes/5.1_Camera_WebServer/picoweb_video.py
     :language: python
     :lines: 12-26
     :dedent:
@@ -123,56 +123,56 @@ The deinit() is used to disable the configuration of the camera to prevent the p
 
 The init() is used to configure the camera's pin driver, image data format, resolution and other information. By default, please do not modify this function, otherwise the camera initialization fails and the image cannot be obtained.
 
-.. literalinclude:: ../../../freenove_Kit/Python/Python_Codes/30.1_Camera_WebServer/picoweb_video.py
+.. literalinclude:: ../../../freenove_Kit/Python/Python_Codes/5.1_Camera_WebServer/picoweb_video.py
     :language: python
     :lines: 31-37
     :dedent:
 
 This function can set the resolution of the camera individually, you can refer to the notes below to select the appropriate resolution size.
 
-.. literalinclude:: ../../../freenove_Kit/Python/Python_Codes/30.1_Camera_WebServer/picoweb_video.py
+.. literalinclude:: ../../../freenove_Kit/Python/Python_Codes/5.1_Camera_WebServer/picoweb_video.py
     :language: python
     :lines: 39-45
     :dedent:
 
 The following functions can modify the image information obtained by the camera.
 
-.. literalinclude:: ../../../freenove_Kit/Python/Python_Codes/30.1_Camera_WebServer/picoweb_video.py
+.. literalinclude:: ../../../freenove_Kit/Python/Python_Codes/5.1_Camera_WebServer/picoweb_video.py
     :language: python
     :lines: 47-58
     :dedent:
 
 This is the code for a simple web interface, used here as an example.
 
-.. literalinclude:: ../../../freenove_Kit/Python/Python_Codes/30.1_Camera_WebServer/picoweb_video.py
+.. literalinclude:: ../../../freenove_Kit/Python/Python_Codes/5.1_Camera_WebServer/picoweb_video.py
     :language: python
     :lines: 61-72
     :dedent:
 
 Web page response function. When a user visits the webpage "/" built by ESP32, ESP32 calls this function, allowing the user to observe a display interface in the browser.
 
-.. literalinclude:: ../../../freenove_Kit/Python/Python_Codes/30.1_Camera_WebServer/picoweb_video.py
+.. literalinclude:: ../../../freenove_Kit/Python/Python_Codes/5.1_Camera_WebServer/picoweb_video.py
     :language: python
     :lines: 75-77
     :dedent:
 
 send_frame() can send the image obtained by ESP32 in web page format. When someone visits the webpage "/video" built by the ESP32, the video(req, resp) function is used to continuously fetch images and send them to the browser.
 
-.. literalinclude:: ../../../freenove_Kit/Python/Python_Codes/30.1_Camera_WebServer/picoweb_video.py
+.. literalinclude:: ../../../freenove_Kit/Python/Python_Codes/5.1_Camera_WebServer/picoweb_video.py
     :language: python
     :lines: 79-93
     :dedent:
 
 Create two route decorators and declare their listening strings and corresponding response handlers respectively.
 
-.. literalinclude:: ../../../freenove_Kit/Python/Python_Codes/30.1_Camera_WebServer/picoweb_video.py
+.. literalinclude:: ../../../freenove_Kit/Python/Python_Codes/5.1_Camera_WebServer/picoweb_video.py
     :language: python
     :lines: 96-100
     :dedent:
 
 This is the main part of the program. First initialize the ESP32 camera, and then configure WiFi to connect the ESP32 to the network. Call the picoweb library, build a webserver, and run it.
 
-.. literalinclude:: ../../../freenove_Kit/Python/Python_Codes/30.1_Camera_WebServer/picoweb_video.py
+.. literalinclude:: ../../../freenove_Kit/Python/Python_Codes/5.1_Camera_WebServer/picoweb_video.py
     :language: python
     :lines: 105-113
     :dedent:

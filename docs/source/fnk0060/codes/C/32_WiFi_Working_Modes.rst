@@ -60,14 +60,14 @@ When ESP32-WROVER successfully connects to "ssid_Router", serial monitor will pr
 
 The following is the program code:
 
-.. literalinclude:: ../../../freenove_Kit/C/Sketches/Sketch_32.1_WiFi_Station/Sketch_32.1_WiFi_Station.ino
+.. literalinclude:: ../../../freenove_Kit/C/Sketches/Sketch_4.1_WiFi_Station/Sketch_4.1_WiFi_Station.ino
     :linenos: 
     :language: c
     :dedent:
 
 Include the WiFi Library header file of ESP32.
 
-.. literalinclude:: ../../../freenove_Kit/C/Sketches/Sketch_32.1_WiFi_Station/Sketch_32.1_WiFi_Station.ino
+.. literalinclude:: ../../../freenove_Kit/C/Sketches/Sketch_4.1_WiFi_Station/Sketch_4.1_WiFi_Station.ino
     :linenos: 
     :language: c
     :lines: 7-7
@@ -75,7 +75,7 @@ Include the WiFi Library header file of ESP32.
 
 Enter correct router name and password.
 
-.. literalinclude:: ../../../freenove_Kit/C/Sketches/Sketch_32.1_WiFi_Station/Sketch_32.1_WiFi_Station.ino
+.. literalinclude:: ../../../freenove_Kit/C/Sketches/Sketch_4.1_WiFi_Station/Sketch_4.1_WiFi_Station.ino
     :linenos: 
     :language: c
     :lines: 9-10
@@ -83,7 +83,7 @@ Enter correct router name and password.
 
 Set ESP32 in Station mode and connect it to your router.
 
-.. literalinclude:: ../../../freenove_Kit/C/Sketches/Sketch_32.1_WiFi_Station/Sketch_32.1_WiFi_Station.ino
+.. literalinclude:: ../../../freenove_Kit/C/Sketches/Sketch_4.1_WiFi_Station/Sketch_4.1_WiFi_Station.ino
     :linenos: 
     :language: c
     :lines: 16-16
@@ -91,7 +91,7 @@ Set ESP32 in Station mode and connect it to your router.
 
 Check whether ESP32 has connected to router successfully every 0.5s.
 
-.. literalinclude:: ../../../freenove_Kit/C/Sketches/Sketch_32.1_WiFi_Station/Sketch_32.1_WiFi_Station.ino
+.. literalinclude:: ../../../freenove_Kit/C/Sketches/Sketch_4.1_WiFi_Station/Sketch_4.1_WiFi_Station.ino
     :linenos: 
     :language: c
     :lines: 12-15
@@ -99,7 +99,7 @@ Check whether ESP32 has connected to router successfully every 0.5s.
 
 Serial monitor prints out the IP address assigned to ESP32-WROVER
 
-.. literalinclude:: ../../../freenove_Kit/C/Sketches/Sketch_32.1_WiFi_Station/Sketch_32.1_WiFi_Station.ino
+.. literalinclude:: ../../../freenove_Kit/C/Sketches/Sketch_4.1_WiFi_Station/Sketch_4.1_WiFi_Station.ino
     :linenos: 
     :language: c
     :lines: 23-23
@@ -148,7 +148,7 @@ Project AP mode
 Component List & Circuit
 ============================================
 
-Component List & Circuit are the same as in Section 30.1.
+Component List & Circuit are the same as in Section 3.1.
 
 Component knowledge
 ============================================
@@ -192,14 +192,14 @@ Sketch_AP_mode
 
 The following is the program code:
 
-.. literalinclude:: ../../../freenove_Kit/C/Sketches/Sketch_32.2_WiFi_AP/Sketch_32.2_WiFi_AP.ino
+.. literalinclude:: ../../../freenove_Kit/C/Sketches/Sketch_4.2_WiFi_AP/Sketch_4.2_WiFi_AP.ino
     :linenos: 
     :language: c
     :dedent:
 
 Include WiFi Library header file of ESP32. 
 
-.. literalinclude:: ../../../freenove_Kit/C/Sketches/Sketch_32.2_WiFi_AP/Sketch_32.2_WiFi_AP.ino
+.. literalinclude:: ../../../freenove_Kit/C/Sketches/Sketch_4.2_WiFi_AP/Sketch_4.2_WiFi_AP.ino
     :linenos: 
     :language: c
     :lines: 7-7
@@ -207,7 +207,7 @@ Include WiFi Library header file of ESP32.
 
 Enter correct AP name and password.
 
-.. literalinclude:: ../../../freenove_Kit/C/Sketches/Sketch_32.2_WiFi_AP/Sketch_32.2_WiFi_AP.ino
+.. literalinclude:: ../../../freenove_Kit/C/Sketches/Sketch_4.2_WiFi_AP/Sketch_4.2_WiFi_AP.ino
     :linenos: 
     :language: c
     :lines: 9-10
@@ -215,7 +215,7 @@ Enter correct AP name and password.
 
 Set ESP32 in AP mode.
 
-.. literalinclude:: ../../../freenove_Kit/C/Sketches/Sketch_32.2_WiFi_AP/Sketch_32.2_WiFi_AP.ino
+.. literalinclude:: ../../../freenove_Kit/C/Sketches/Sketch_4.2_WiFi_AP/Sketch_4.2_WiFi_AP.ino
     :linenos: 
     :language: c
     :lines: 21-21
@@ -235,7 +235,7 @@ Turn on an AP in ESP32, whose name is set by ssid_AP and password is set by pass
 
 Check whether the AP is turned on successfully. If yes, print out IP and MAC address of AP established by ESP32. If no, print out the failure prompt. 
 
-.. literalinclude:: ../../../freenove_Kit/C/Sketches/Sketch_32.2_WiFi_AP/Sketch_32.2_WiFi_AP.ino
+.. literalinclude:: ../../../freenove_Kit/C/Sketches/Sketch_4.2_WiFi_AP/Sketch_4.2_WiFi_AP.ino
     :linenos: 
     :language: c
     :lines: 25-32
@@ -312,7 +312,7 @@ Sketch_AP_Station_mode
 .. image:: ../_static/imgs/32_WiFi_Working_Modes/Chapter32_09.png
     :align: center
 
-It is analogous to project 32.1 and project 32.2. Before running the Sketch, you need to modify ssid_Router, password_Router, ssid_AP and password_AP shown in the box of the illustration above.
+It is analogous to project 4.1 and project 4.2. Before running the Sketch, you need to modify ssid_Router, password_Router, ssid_AP and password_AP shown in the box of the illustration above.
 
 After making sure that Sketch is modified correctly, compile and upload codes to ESP32-WROVER, open serial monitor and set baud rate to 115200. And then it will display as follows:
 
@@ -326,7 +326,7 @@ When observing the print information of the serial monitor, turn on the WiFi sca
 
 The following is the program code:
 
-.. literalinclude:: ../../../freenove_Kit/C/Sketches/Sketch_32.3_AP_Station/Sketch_32.3_AP_Station.ino
+.. literalinclude:: ../../../freenove_Kit/C/Sketches/Sketch_4.3_AP_Station/Sketch_4.3_AP_Station.ino
     :linenos: 
     :language: c
     :dedent:
