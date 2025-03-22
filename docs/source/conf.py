@@ -13,9 +13,9 @@ import sys
 sys.path.insert(0, pathlib.Path(__file__).parents[2].resolve().as_posix())
 
 os.system("rm -r freenove_Kit")
-os.system("git clone --depth 1 https://github.com/Freenove/Freenove_Ultimate_Starter_Kit_for_ESP32 freenove_Kit")
+os.system("git clone --depth 1 https://github.com/Freenove/Freenove_ESP32_WROVER_Board freenove_Kit")
 
-project = "fnk0047-docs"
+project = "fnk0060-docs"
 copyright = '2016-2025, Freenove'
 author = 'Freenove'
 release = 'v1.0.0'
