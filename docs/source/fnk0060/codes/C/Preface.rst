@@ -162,12 +162,12 @@ Installing CH340
 .. image:: ../_static/imgs/Preface/Preface19.png
     :align: center
 
-If you would not like to download the installation package, you can open "Freenove_Ultimate_Starter_Kit_for_ESP32/CH340", we have prepared the installation package.
+If you would not like to download the installation package, you can open "Freenove_ESP32_WROVER_Board/CH340", we have prepared the installation package.
 
 .. image:: ../_static/imgs/Preface/Preface20.png
     :align: center
 
-2.	Open the folder "Freenove_Ultimate_Starter_Kit_for_ESP32/CH340/Windows/"
+2.	Open the folder "Freenove_ESP32_WROVER_Board/CH340/Windows/"
 
 .. image:: ../_static/imgs/Preface/Preface21.png
     :align: center
@@ -202,9 +202,9 @@ First, download CH340 driver, click http://www.wch-ic.com/search?q=CH340&t=downl
 .. image:: ../_static/imgs/Preface/Preface26.png
     :align: center
 
-If you would not like to download the installation package, you can open "Freenove_Ultimate_Starter_Kit_for_ESP32/CH340", we have prepared the installation package.
+If you would not like to download the installation package, you can open "Freenove_ESP32_WROVER_Board/CH340", we have prepared the installation package.
 
-Second, open the folder "Freenove_Ultimate_Starter_Kit_for_ESP32/CH340/MAC/"
+Second, open the folder "Freenove_ESP32_WROVER_Board/CH340/MAC/"
 
 .. image:: ../_static/imgs/Preface/Preface27.png
     :align: center

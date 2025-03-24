@@ -44,7 +44,7 @@ We can also use DC jack of extension board to power ESP32-WROVER.In this way, 5v
 Code
 ===========================
 
-Codes used in this tutorial are saved in "Freenove_Ultimate_Starter_Kit_for_ESP32/Python/
+Codes used in this tutorial are saved in "Freenove_ESP32_WROVER_Board/Python/
 
 Python_Codes". You can move the codes to any location. For example, we save the codes in Disk(D) with the path of "D:/Micropython_Codes".
 
@@ -449,7 +449,7 @@ CAUTION: Avoid any possible short circuits (especially connecting 5V or GND, 3.3
 Code
 =====================================
 
-Codes used in this tutorial are saved in "Freenove_Ultimate_Starter_Kit_for_ESP32/Python/
+Codes used in this tutorial are saved in "Freenove_ESP32_WROVER_Board/Python/
 
 Python_Codes". You can move the codes to any location. For example, we save the codes in Disk(D) with the path of "D:/Micropython_Codes".
 

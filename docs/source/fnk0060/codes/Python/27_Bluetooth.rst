@@ -4,7 +4,7 @@ Chapter Bluetooth
 
 This chapter mainly introduces how to make simple data transmission through Bluetooth of ESP32-WROVER and mobile phones.
 
-Project 2.1 is classic Bluetooth and Project 2.2 is low power Bluetooth.If you are an iPhone user, please start with Project 2.2.
+Project 02.1 is classic Bluetooth and Project 02.2 is low power Bluetooth.If you are an iPhone user, please start with Project 02.2.
 
 Project Bluetooth Low Energy Data Passthrough
 ****************************************************
@@ -37,9 +37,9 @@ If you can't install Serial Bluetooth on your phone, try LightBlue.If you do not
 Code
 ======================================
 
-Move the program folder "Freenove_Ultimate_Starter_Kit_for_ESP32/Python/Python_Codes" to disk(D) in advance with the path of "D:/Micropython_Codes".
+Move the program folder "Freenove_ESP32_WROVER_Board/Python/Python_Codes" to disk(D) in advance with the path of "D:/Micropython_Codes".
 
-Open "Thonny", click "This computer"  ->  "D:"  ->  "Micropython_Codes"  ->  "2.1_BLE". Select "ble_advertising.py", right click your mouse to select "Upload to /", wait for "ble_advertising.py" to be uploaded to ESP32-WROVER and then double click "BLE.py". 
+Open "Thonny", click "This computer"  ->  "D:"  ->  "Micropython_Codes"  ->  "02.1_BLE". Select "ble_advertising.py", right click your mouse to select "Upload to /", wait for "ble_advertising.py" to be uploaded to ESP32-WROVER and then double click "BLE.py". 
 
 BLE
 --------------------------------------
@@ -96,34 +96,34 @@ And now data can be transferred between your mobile phone and computer via ESP32
 
 The following is the program code:
 
-.. literalinclude:: ../../../freenove_Kit/Python/Python_Codes/2.1_BLE/BLE.py
+.. literalinclude:: ../../../freenove_Kit/Python/Python_Codes/02.1_BLE/BLE.py
     :language: python
     :dedent:
 
 Define the specified UUID number for BLE vendor.
 
-.. literalinclude:: ../../../freenove_Kit/Python/Python_Codes/2.1_BLE/BLE.py
+.. literalinclude:: ../../../freenove_Kit/Python/Python_Codes/02.1_BLE/BLE.py
     :language: python
     :lines: 20-28
     :dedent:
 
 Write an _irq function to manage BLE interrupt events.
 
-.. literalinclude:: ../../../freenove_Kit/Python/Python_Codes/2.1_BLE/BLE.py
+.. literalinclude:: ../../../freenove_Kit/Python/Python_Codes/02.1_BLE/BLE.py
     :language: python
     :lines: 46-63
     :dedent:
 
 Initialize the BLE function and name it.
 
-.. literalinclude:: ../../../freenove_Kit/Python/Python_Codes/2.1_BLE/BLE.py
+.. literalinclude:: ../../../freenove_Kit/Python/Python_Codes/02.1_BLE/BLE.py
     :language: python
     :lines: 36-36
     :dedent:
 
 When the mobile phone send data to ESP32 via BLE Bluetooth, it will print them out with serial port; When the serial port of ESP32 receive data, it will send them to mobile via BLE Bluetooth.
 
-.. literalinclude:: ../../../freenove_Kit/Python/Python_Codes/2.1_BLE/BLE.py
+.. literalinclude:: ../../../freenove_Kit/Python/Python_Codes/02.1_BLE/BLE.py
     :language: python
     :lines: 80-96
     :dedent:

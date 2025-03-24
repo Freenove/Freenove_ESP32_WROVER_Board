@@ -4,9 +4,9 @@ Chapter Bluetooth
 
 This chapter mainly introduces how to make simple data transmission through Bluetooth of ESP32-WROVER and mobile phones.
 
-Project 2.1 is classic Bluetooth and Project 2.2 is low power Bluetooth.If you are an iPhone user, please start with Project 2.2.
+Project 02.1 is classic Bluetooth and Project 02.2 is low power Bluetooth.If you are an iPhone user, please start with Project 02.2.
 
-Project 2.1 Bluetooth Passthrough
+Project 02.1 Bluetooth Passthrough
 ********************************************
 
 Component List
@@ -57,7 +57,7 @@ Connect Freenove ESP32 to the computer using the USB cable.
 Sketch
 ===================================
 
-Sketch_2.1_SerialToSerialBT
+Sketch_02.1_SerialToSerialBT
 -------------------------------------
 
 .. image:: ../_static/imgs/27_Bluetooth/Chapter27_03.png
@@ -197,7 +197,7 @@ If you can't install Serial Bluetooth on your phone, try LightBlue.If you do not
 .. image:: ../_static/imgs/27_Bluetooth/Chapter27_17.png
     :align: center
 
-Step1. Upload the code of Project2.2 to ESP32.
+Step1. Upload the code of Project02.2 to ESP32.
 
 Step2. Click on serial monitor.
 
@@ -248,14 +248,14 @@ And now data can be transferred between your mobile phone and computer via ESP32
 
 The following is the program code:
 
-.. literalinclude:: ../../../freenove_Kit/C/Sketches/Sketch_2.2_BLE_USART/Sketch_2.2_BLE_USART.ino
+.. literalinclude:: ../../../freenove_Kit/C/Sketches/Sketch_02.2_BLE_USART/Sketch_02.2_BLE_USART.ino
     :linenos: 
     :language: c
     :dedent:
 
 Define the specified UUID number for BLE vendor.
 
-.. literalinclude:: ../../../freenove_Kit/C/Sketches/Sketch_2.2_BLE_USART/Sketch_2.2_BLE_USART.ino
+.. literalinclude:: ../../../freenove_Kit/C/Sketches/Sketch_02.2_BLE_USART/Sketch_02.2_BLE_USART.ino
     :linenos: 
     :language: c
     :lines: 18-20
@@ -263,7 +263,7 @@ Define the specified UUID number for BLE vendor.
 
 Write a Callback function for BLE server to manage connection of BLE.
 
-.. literalinclude:: ../../../freenove_Kit/C/Sketches/Sketch_2.2_BLE_USART/Sketch_2.2_BLE_USART.ino
+.. literalinclude:: ../../../freenove_Kit/C/Sketches/Sketch_02.2_BLE_USART/Sketch_02.2_BLE_USART.ino
     :linenos: 
     :language: c
     :lines: 22-30
@@ -271,7 +271,7 @@ Write a Callback function for BLE server to manage connection of BLE.
 
 Write Callback function with BLE features. When it is called, as the mobile terminal send data to ESP32, it will store them into reload.
 
-.. literalinclude:: ../../../freenove_Kit/C/Sketches/Sketch_2.2_BLE_USART/Sketch_2.2_BLE_USART.ino
+.. literalinclude:: ../../../freenove_Kit/C/Sketches/Sketch_02.2_BLE_USART/Sketch_02.2_BLE_USART.ino
     :linenos: 
     :language: c
     :lines: 32-42
@@ -279,7 +279,7 @@ Write Callback function with BLE features. When it is called, as the mobile term
 
 Initialize the BLE function and name it.
 
-.. literalinclude:: ../../../freenove_Kit/C/Sketches/Sketch_2.2_BLE_USART/Sketch_2.2_BLE_USART.ino
+.. literalinclude:: ../../../freenove_Kit/C/Sketches/Sketch_02.2_BLE_USART/Sketch_02.2_BLE_USART.ino
     :linenos: 
     :language: c
     :lines: 61-61
@@ -287,7 +287,7 @@ Initialize the BLE function and name it.
 
 When the mobile phone send data to ESP32 via BLE Bluetooth, it will print them out with serial port; When the serial port of ESP32 receive data, it will send them to mobile via BLE Bluetooth.
 
-.. literalinclude:: ../../../freenove_Kit/C/Sketches/Sketch_2.2_BLE_USART/Sketch_2.2_BLE_USART.ino
+.. literalinclude:: ../../../freenove_Kit/C/Sketches/Sketch_02.2_BLE_USART/Sketch_02.2_BLE_USART.ino
     :linenos: 
     :language: c
     :lines: 65-78
@@ -307,7 +307,7 @@ The design for creating the BLE server is:
 
 6. Start advertising.
 
-.. literalinclude:: ../../../freenove_Kit/C/Sketches/Sketch_2.2_BLE_USART/Sketch_2.2_BLE_USART.ino
+.. literalinclude:: ../../../freenove_Kit/C/Sketches/Sketch_02.2_BLE_USART/Sketch_02.2_BLE_USART.ino
     :linenos: 
     :language: c
     :lines: 44-57

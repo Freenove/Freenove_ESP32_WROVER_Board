@@ -75,14 +75,14 @@ Click on Start Stream. The effect is shown in the image below.
 
 The following is the main program code. You need include other code files in the same folder when write your own code.
 
-.. literalinclude:: ../../../freenove_Kit/C/Sketches/Sketch_6.1_CameraWebServer/Sketch_6.1_CameraWebServer.ino
+.. literalinclude:: ../../../freenove_Kit/C/Sketches/Sketch_06.1_CameraWebServer/Sketch_06.1_CameraWebServer.ino
     :linenos: 
     :language: c
     :dedent:
 
 Add procedure files and API interface files related to ESP32 camera.
 
-.. literalinclude:: ../../../freenove_Kit/C/Sketches/Sketch_6.1_CameraWebServer/Sketch_6.1_CameraWebServer.ino
+.. literalinclude:: ../../../freenove_Kit/C/Sketches/Sketch_06.1_CameraWebServer/Sketch_06.1_CameraWebServer.ino
     :linenos: 
     :language: c
     :lines: 8-30
@@ -90,7 +90,7 @@ Add procedure files and API interface files related to ESP32 camera.
 
 Enter the name and password of the router 
 
-.. literalinclude:: ../../../freenove_Kit/C/Sketches/Sketch_6.1_CameraWebServer/Sketch_6.1_CameraWebServer.ino
+.. literalinclude:: ../../../freenove_Kit/C/Sketches/Sketch_06.1_CameraWebServer/Sketch_06.1_CameraWebServer.ino
     :linenos: 
     :language: c
     :lines: 32-33
@@ -98,7 +98,7 @@ Enter the name and password of the router
 
 Initialize serial port, set baud rate to 115200; open the debug and output function of the serial.
 
-.. literalinclude:: ../../../freenove_Kit/C/Sketches/Sketch_6.1_CameraWebServer/Sketch_6.1_CameraWebServer.ino
+.. literalinclude:: ../../../freenove_Kit/C/Sketches/Sketch_06.1_CameraWebServer/Sketch_06.1_CameraWebServer.ino
     :linenos: 
     :language: c
     :lines: 40-42
@@ -106,7 +106,7 @@ Initialize serial port, set baud rate to 115200; open the debug and output funct
 
 Configure parameters including interface pins of the camera. Note: It is generally not recommended to change them.
 
-.. literalinclude:: ../../../freenove_Kit/C/Sketches/Sketch_6.1_CameraWebServer/Sketch_6.1_CameraWebServer.ino
+.. literalinclude:: ../../../freenove_Kit/C/Sketches/Sketch_06.1_CameraWebServer/Sketch_06.1_CameraWebServer.ino
     :linenos: 
     :language: c
     :lines: 79-106
@@ -114,7 +114,7 @@ Configure parameters including interface pins of the camera. Note: It is general
 
 ESP32 connects to the router and prints a successful connection prompt. If it has not been successfully connected, press the reset key on the ESP32-WROVER.
 
-.. literalinclude:: ../../../freenove_Kit/C/Sketches/Sketch_6.1_CameraWebServer/Sketch_6.1_CameraWebServer.ino
+.. literalinclude:: ../../../freenove_Kit/C/Sketches/Sketch_06.1_CameraWebServer/Sketch_06.1_CameraWebServer.ino
     :linenos: 
     :language: c
     :lines: 59-66
@@ -122,7 +122,7 @@ ESP32 connects to the router and prints a successful connection prompt. If it ha
 
 Open the video streams server function of the camera and print its IP address via serial port.
 
-.. literalinclude:: ../../../freenove_Kit/C/Sketches/Sketch_6.1_CameraWebServer/Sketch_6.1_CameraWebServer.ino
+.. literalinclude:: ../../../freenove_Kit/C/Sketches/Sketch_06.1_CameraWebServer/Sketch_06.1_CameraWebServer.ino
     :linenos: 
     :language: c
     :lines: 68-72
@@ -136,7 +136,7 @@ The set_brightness() function sets the brightness of the image, with values rang
 
 The set_saturation() function sets the color saturation of the image, with values ranging from -2 to 2.
 
-.. literalinclude:: ../../../freenove_Kit/C/Sketches/Sketch_6.1_CameraWebServer/Sketch_6.1_CameraWebServer.ino
+.. literalinclude:: ../../../freenove_Kit/C/Sketches/Sketch_06.1_CameraWebServer/Sketch_06.1_CameraWebServer.ino
     :linenos: 
     :language: c
     :lines: 53-57
@@ -223,14 +223,14 @@ The effect is shown in the image below.
 
 The following is the main program code. You need include other code files in the same folder when write your own code.
 
-.. literalinclude:: ../../../freenove_Kit/C/Sketches/Sketch_6.2_As_VideoWebServer/Sketch_6.2_As_VideoWebServer.ino
+.. literalinclude:: ../../../freenove_Kit/C/Sketches/Sketch_06.2_As_VideoWebServer/Sketch_06.2_As_VideoWebServer.ino
     :linenos: 
     :language: c
     :dedent:
 
 Configure parameters including interface pins of the camera. Note: It is generally not recommended to change them.
 
-.. literalinclude:: ../../../freenove_Kit/C/Sketches/Sketch_6.2_As_VideoWebServer/Sketch_6.2_As_VideoWebServer.ino
+.. literalinclude:: ../../../freenove_Kit/C/Sketches/Sketch_06.2_As_VideoWebServer/Sketch_06.2_As_VideoWebServer.ino
     :linenos: 
     :language: c
     :lines: 24-44
@@ -238,7 +238,7 @@ Configure parameters including interface pins of the camera. Note: It is general
 
 ESP32 connects to the router and prints a successful connection prompt. If it has not been successfully connected, press the reset key on the ESP32-WROVER.
 
-.. literalinclude:: ../../../freenove_Kit/C/Sketches/Sketch_6.2_As_VideoWebServer/Sketch_6.2_As_VideoWebServer.ino
+.. literalinclude:: ../../../freenove_Kit/C/Sketches/Sketch_06.2_As_VideoWebServer/Sketch_06.2_As_VideoWebServer.ino
     :linenos: 
     :language: c
     :lines: 69-76
@@ -246,7 +246,7 @@ ESP32 connects to the router and prints a successful connection prompt. If it ha
 
 Open the video streams server function of the camera and print its IP address via serial port.
 
-.. literalinclude:: ../../../freenove_Kit/C/Sketches/Sketch_6.2_As_VideoWebServer/Sketch_6.2_As_VideoWebServer.ino
+.. literalinclude:: ../../../freenove_Kit/C/Sketches/Sketch_06.2_As_VideoWebServer/Sketch_06.2_As_VideoWebServer.ino
     :linenos: 
     :language: c
     :lines: 78-82
