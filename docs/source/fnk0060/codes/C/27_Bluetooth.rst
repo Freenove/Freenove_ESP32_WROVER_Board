@@ -1,12 +1,12 @@
 ##############################################################################
-Chapter Bluetooth
+Chapter 2 Bluetooth
 ##############################################################################
 
 This chapter mainly introduces how to make simple data transmission through Bluetooth of ESP32-WROVER and mobile phones.
 
-Project 02.1 is classic Bluetooth and Project 02.2 is low power Bluetooth.If you are an iPhone user, please start with Project 02.2.
+Project 2.1 is classic Bluetooth and Project 2.2 is low power Bluetooth.If you are an iPhone user, please start with Project 2.2.
 
-Project 02.1 Bluetooth Passthrough
+Project 2.1 Bluetooth Passthrough
 ********************************************
 
 Component List
@@ -135,7 +135,7 @@ Reference
 
     **end():** disconnect all Bluetooth devices and turn off the Bluetooth, release all occupied space
 
-Project Bluetooth Low Energy Data Passthrough
+Project 2.2 Bluetooth Low Energy Data Passthrough
 ***********************************************************
 
 Component List
@@ -163,7 +163,7 @@ Connect Freenove ESP32 to the computer using the USB cable.
 Sketch
 ==========================
 
-Sketch_BLE
+Sketch_02.2_BLE
 ----------------------------
 
 .. image:: ../_static/imgs/27_Bluetooth/Chapter27_11.png
@@ -207,7 +207,7 @@ If you can't install Serial Bluetooth on your phone, try LightBlue.If you do not
 .. image:: ../_static/imgs/27_Bluetooth/Chapter27_17.png
     :align: center
 
-Step1. Upload the code of Project02.2 to ESP32.
+Step1. Upload the code of Project2.2 to ESP32.
 
 Step2. Click on serial monitor.
 

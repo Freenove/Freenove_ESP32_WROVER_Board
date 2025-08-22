@@ -1,12 +1,12 @@
 ##############################################################################
-Chapter WiFi Working Modes
+Chapter 4 WiFi Working Modes
 ##############################################################################
 
 In this chapter, we'll focus on the WiFi infrastructure for ESP32-WROVER. 
 
 ESP32-WROVER has 3 different WiFi operating modes: station mode, AP mode and AP+station mode. All WiFi programming projects must be configured with WiFi operating mode before using WiFi, otherwise WiFi cannot be used.
 
-Project Station mode
+Project 4.1 Station mode
 *******************************************
 
 Component List
@@ -48,7 +48,7 @@ Connect Freenove ESP32 to the computer using the USB cable.
 Sketch
 =================================
 
-Sketch_Station_mode
+Sketch_04.1_Station_mode
 ------------------------------------
 
 .. image:: ../_static/imgs/32_WiFi_Working_Modes/Chapter32_02.png
@@ -147,13 +147,13 @@ Reference
 
     **setAutoReconnect(boolen):** set automatic reconnection Every time ESP32 disconnects WiFi, it will reconnect to WiFi automatically.
 
-Project AP mode
+Project 4.2 AP mode
 *********************************************
 
 Component List & Circuit
 ============================================
 
-Component List & Circuit are the same as in Section 03.1.
+Component List & Circuit are the same as in Section 3.1.
 
 Component knowledge
 ============================================
@@ -192,7 +192,7 @@ When observing the print information of the serial monitor, turn on the WiFi sca
 .. image:: ../_static/imgs/32_WiFi_Working_Modes/Chapter32_07.png
     :align: center
 
-Sketch_AP_mode
+Sketch_04.2_AP_mode
 ------------------------------------
 
 The following is the program code:
@@ -277,7 +277,7 @@ Reference
     
     **softAPdisconnect (): ** disconnect AP mode.
 
-Project AP+Station mode
+Project 4.3 AP+Station mode
 ******************************************
 
 Component List
@@ -316,13 +316,13 @@ Connect Freenove ESP32 to the computer using the USB cable.
 Sketch
 =============================================
 
-Sketch_AP_Station_mode
+Sketch_04.3_AP_Station_mode
 --------------------------------------------
 
 .. image:: ../_static/imgs/32_WiFi_Working_Modes/Chapter32_09.png
     :align: center
 
-It is analogous to project 04.1 and project 04.2. Before running the Sketch, you need to modify ssid_Router, password_Router, ssid_AP and password_AP shown in the box of the illustration above.
+It is analogous to project 4.1 and project 4.2. Before running the Sketch, you need to modify ssid_Router, password_Router, ssid_AP and password_AP shown in the box of the illustration above.
 
 After making sure that Sketch is modified correctly, compile and upload codes to ESP32-WROVER, open serial monitor and set baud rate to 115200. And then it will display as follows:
 
