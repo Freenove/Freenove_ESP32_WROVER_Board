@@ -1,119 +1,206 @@
-# This section uses firmware from Lemariva's Micropython-camera-driver.  
-# for details, please refer to: https://github.com/lemariva/micropython-camera-driver  
-import picoweb
-import utime
-import camera
+import network
+import socket
+import time
 import gc
+from camera import Camera, FrameSize, PixelFormat
 
-SSID = "********"         # Enter your WiFi name
-PASSWORD = "********"     # Enter your WiFi password
+cam = Camera(
+    frame_size=FrameSize.QQVGA,
+    pixel_format=PixelFormat.RGB565,
+    xclk_freq=20000000,
+    init=True
+)
 
-# Let ESP32 connect to wifi.
-def wifi_connect():
-    import network
-    wlan = network.WLAN(network.STA_IF)
-    wlan.active(True)
-    if not wlan.isconnected():
-        print('connecting to network...')
-        wlan.connect(SSID, PASSWORD) 
-    start = utime.time()
-    while not wlan.isconnected():
-        utime.sleep(1)
-        if utime.time()-start > 5:
-            print("connect timeout!")
-            break
-    if wlan.isconnected():
-        print('network config:', wlan.ifconfig())
+ssid = '********'
+password = '********'
 
-# Initializing the Camera
-def camera_init():
-    # Disable camera initialization
-    camera.deinit()
-    # Enable camera initialization
-    camera.init(0, d0=4, d1=5, d2=18, d3=19, d4=36, d5=39, d6=34, d7=35,
-                format=camera.JPEG, framesize=camera.FRAME_VGA, 
-                xclk_freq=camera.XCLK_20MHz,
-                href=23, vsync=25, reset=-1, pwdn=-1,
-                sioc=27, siod=26, xclk=21, pclk=22, fb_location=camera.PSRAM)
+station = network.WLAN(network.STA_IF)
+station.active(True)
+station.connect(ssid, password)
 
-    camera.framesize(camera.FRAME_VGA) # Set the camera resolution
-    # The options are the following:
-    # FRAME_96X96 FRAME_QQVGA FRAME_QCIF FRAME_HQVGA FRAME_240X240
-    # FRAME_QVGA FRAME_CIF FRAME_HVGA FRAME_VGA FRAME_SVGA
-    # FRAME_XGA FRAME_HD FRAME_SXGA FRAME_UXGA
-    # Note: The higher the resolution, the more memory is used.
-    # Note: And too much memory may cause the program to fail.
-    
-    camera.flip(1)                       # Flip up and down window: 0-1
-    camera.mirror(1)                     # Flip window left and right: 0-1
-    camera.saturation(0)                 # saturation: -2,2 (default 0). -2 grayscale 
-    camera.brightness(0)                 # brightness: -2,2 (default 0). 2 brightness
-    camera.contrast(0)                   # contrast: -2,2 (default 0). 2 highcontrast
-    camera.quality(10)                   # quality: # 10-63 lower number means higher quality
-    # Note: The smaller the number, the sharper the image. The larger the number, the more blurry the image
-    
-    camera.speffect(camera.EFFECT_NONE)  # special effects:
-    # EFFECT_NONE (default) EFFECT_NEG EFFECT_BW EFFECT_RED EFFECT_GREEN EFFECT_BLUE EFFECT_RETRO
-    camera.whitebalance(camera.WB_NONE)  # white balance
-    # WB_NONE (default) WB_SUNNY WB_CLOUDY WB_OFFICE WB_HOME
+while not station.isconnected():
+    time.sleep(1)
 
-# HTTP Response Content  
-index_web="""
-HTTP/1.0 200 OK\r\n
+ip = station.ifconfig()[0]
+print(f'Connected! Open in browser: http://{ip}')
+
+addr = socket.getaddrinfo('0.0.0.0', 80)[0][-1]
+s = socket.socket()
+s.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
+s.bind(addr)
+s.listen(5)
+
+print('Server running on:', addr)
+
+html = """<!DOCTYPE html>
 <html>
-  <head>
-    <title>Video Streaming</title>
-  </head>
-  <body>
-    <h1>Video Streaming Demonstration</h1>
-    <img src="/video" margin-top:100px; style="transform:rotate(180deg)"; />
-  </body>
+<head>
+    <meta charset="UTF-8">
+    <title>ESP32 Camera Stream</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f0f0f0;
+            font-family: Arial, sans-serif;
+        }
+        .video-container {
+            text-align: center;
+            width: 100%;
+            max-width: 1000px;
+        }
+        canvas {
+            width: auto;
+            height: auto;
+            image-rendering: pixelated;
+            border: 2px solid #ccc;
+            background-color: #000;
+        }
+        #status {
+            margin-top: 10px;
+            font-size: 16px;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+    <div class="video-container">
+        <h1>ESP32 Camera Stream</h1>
+        <canvas id="videoCanvas" width="640" height="480"></canvas>
+        <div id="status">Connecting to camera...</div>
+    </div>
+
+    <script>
+        const canvas = document.getElementById('videoCanvas');
+        const ctx = canvas.getContext('2d');
+        const statusDiv = document.getElementById('status');
+        
+        function fetchImage() {
+            fetch('/frame')
+                .then(response => {
+                    if (!response.ok) throw new Error('Network request error');
+                    return response.arrayBuffer();
+                })
+                .then(data => {
+                    if (!data || data.byteLength === 0) {
+                        statusDiv.textContent = 'Error: Empty data received';
+                        setTimeout(fetchImage, 500);
+                        return;
+                    }
+                    
+                    let uint8Array = new Uint8Array(data);
+                    if (data.byteLength % 2 !== 0) {
+                        uint8Array = new Uint8Array(data.slice(0, data.byteLength - 1));
+                    }
+                    
+                    const swappedArray = swapRgb565Bytes(uint8Array);
+                    const rgb565Array = new Uint16Array(swappedArray.buffer);
+                    const rgbaArray = convertRGB565ToRGBA(rgb565Array);
+                    
+                    const actualPixelCount = rgb565Array.length;
+                    
+                    let width, height;
+                    if (actualPixelCount === 640 * 480) {
+                        width = 640; height = 480;
+                    } else if (actualPixelCount === 320 * 240) {
+                        width = 320; height = 240;
+                    } else if (actualPixelCount === 160 * 120) {
+                        width = 160; height = 120;
+                    } else {
+                        width = Math.floor(Math.sqrt(actualPixelCount));
+                        while (actualPixelCount % width !== 0 && width > 1) { width--; }
+                        height = actualPixelCount / width;
+                    }
+                    
+                    if (canvas.width !== width || canvas.height !== height) {
+                        canvas.width = width;
+                        canvas.height = height;
+                    }
+                    
+                    const imageData = new ImageData(rgbaArray, width, height);
+                    ctx.putImageData(imageData, 0, 0);
+                    statusDiv.textContent = `Streaming... Resolution: ${width}x${height}`;
+                    
+                    setTimeout(fetchImage, 50);
+                })
+                .catch(error => {
+                    console.error('Failed to fetch image:', error);
+                    statusDiv.textContent = 'Connection lost, reconnecting...';
+                    setTimeout(fetchImage, 1000);
+                });
+        }
+        
+        function swapRgb565Bytes(uint8Array) {
+            const swapped = new Uint8Array(uint8Array.length);
+            for (let i = 0; i < uint8Array.length; i += 2) {
+                if (i + 1 < uint8Array.length) {
+                    swapped[i] = uint8Array[i + 1];
+                    swapped[i + 1] = uint8Array[i];
+                } else {
+                    swapped[i] = uint8Array[i];
+                }
+            }
+            return swapped;
+        }
+        
+        function convertRGB565ToRGBA(rgb565Array) {
+            const length = rgb565Array.length;
+            const rgbaArray = new Uint8ClampedArray(length * 4);
+            
+            for (let i = 0; i < length; i++) {
+                const color = rgb565Array[i];
+                const r = ((color >> 11) & 0x1F) << 3;
+                const g = ((color >> 5) & 0x3F) << 2;
+                const b = (color & 0x1F) << 3;
+                
+                const idx = i * 4;
+                rgbaArray[idx] = r;
+                rgbaArray[idx + 1] = g;
+                rgbaArray[idx + 2] = b;
+                rgbaArray[idx + 3] = 255;
+            }
+            return rgbaArray;
+        }
+        
+        fetchImage();
+    </script>
+</body>
 </html>
 """
 
-# HTTP Response
-def index(req, resp):
-    # You can construct an HTTP response completely yourself, having
-    yield from resp.awrite(index_web)
+def handle_client(client):
+    try:
+        request = client.recv(1024).decode('utf-8', 'ignore')
+        if 'GET /frame' in request:
+            frame = cam.capture()
+            if frame:
+                header = (
+                    "HTTP/1.1 200 OK\r\n"
+                    "Content-Type: application/octet-stream\r\n"
+                    "Access-Control-Allow-Origin: *\r\n"
+                    "Connection: close\r\n\r\n"
+                )
+                client.sendall(header.encode('utf-8') + frame)
+            else:
+                client.sendall(b"HTTP/1.1 500 Internal Server Error\r\n\r\n")
+        else:
+            header = (
+                "HTTP/1.1 200 OK\r\n"
+                "Content-Type: text/html; charset=utf-8\r\n"
+                "Connection: close\r\n\r\n"
+            )
+            client.sendall(header.encode('utf-8') + html.encode('utf-8'))
+    finally:
+        client.close()
 
-# Send camera pictures
-def send_frame():
-    buf = camera.capture()
-    yield (b'--frame\r\n'
-           b'Content-Type: image/jpeg\r\n\r\n'
-           + buf + b'\r\n')
-    del buf
-    gc.collect()
-        
-# Video transmission
-def video(req, resp):
-    yield from picoweb.start_response(resp, content_type="multipart/x-mixed-replace; boundary=frame")
+try:
     while True:
-        yield from resp.awrite(next(send_frame()))
-        gc.collect()
-
-
-ROUTES = [
-    # You can specify exact URI string matches...
-    ("/", index),
-    ("/video", video),
-]
-
-
-if __name__ == '__main__':
-    
-    import ulogging as logging
-    logging.basicConfig(level=logging.INFO)
-    camera_init()
-    wifi_connect()
-
-    #Create an app object that contains two decorators
-    app = picoweb.WebApp(__name__, ROUTES)
-    
-    app.run(debug=1, port=80, host="0.0.0.0")
-    # debug values:
-    # -1 disable all logging
-    # 0 (False) normal logging: requests and errors
-    # 1 (True) debug logging
-    # 2 extra debug logging
-
+        client, addr = s.accept()
+        handle_client(client)
+except KeyboardInterrupt:
+    print("Program stopped")
+finally:
+    cam.deinit()
