@@ -1,0 +1,14 @@
+[
+    {
+        "command": "/home/fin/.platformio/packages/toolchain-xtensa-esp32/bin/xtensa-esp32-elf-g++ -o .pio/build/esp-wrover-kit/src/app_httpd.o -c -fno-rtti -fno-exceptions -std=gnu++11 -Os -Wall -nostdlib -Wpointer-arith -Wno-error=unused-but-set-variable -Wno-error=unused-variable -mlongcalls -ffunction-sections -fdata-sections -fstrict-volatile-bitfields -DESP32 -DESP_PLATFORM -DF_CPU=240000000L -DHAVE_CONFIG_H -DMBEDTLS_CONFIG_FILE=\\\"mbedtls/esp_config.h\\\" -DPLATFORMIO=60109 -DARDUINO_ESP32_DEV -Isrc src/app_httpd.cpp",
+        "directory": "/Storage/Code/Freenove_ESP32_WROVER_Board/C/Sketches/fsVideoWS",
+        "file": "src/app_httpd.cpp",
+        "output": ".pio/build/esp-wrover-kit/src/app_httpd.o"
+    },
+    {
+        "command": "/home/fin/.platformio/packages/toolchain-xtensa-esp32/bin/xtensa-esp32-elf-g++ -o .pio/build/esp-wrover-kit/src/main.o -c -fno-rtti -fno-exceptions -std=gnu++11 -Os -Wall -nostdlib -Wpointer-arith -Wno-error=unused-but-set-variable -Wno-error=unused-variable -mlongcalls -ffunction-sections -fdata-sections -fstrict-volatile-bitfields -DESP32 -DESP_PLATFORM -DF_CPU=240000000L -DHAVE_CONFIG_H -DMBEDTLS_CONFIG_FILE=\\\"mbedtls/esp_config.h\\\" -DPLATFORMIO=60109 -DARDUINO_ESP32_DEV -Isrc src/main.cpp",
+        "directory": "/Storage/Code/Freenove_ESP32_WROVER_Board/C/Sketches/fsVideoWS",
+        "file": "src/main.cpp",
+        "output": ".pio/build/esp-wrover-kit/src/main.o"
+    }
+]
